@@ -19,7 +19,7 @@ public abstract class Animal {
     }
 
     public String toString(){
-        return "Name: " +  name + " HP: " + health;
+        return "Name: " +  name + " I am "+ getType() + ", HP: " + health;
     }
 
     public void advanceDay(){
@@ -42,5 +42,11 @@ public abstract class Animal {
 
     public void setEnclosure(Enclosure enclosure) {
         this.enclosure = enclosure;
+    }
+
+    abstract public AnimalType getType();
+
+    public Enclosure getEnclosure() {
+        return enclosure;
     }
 }

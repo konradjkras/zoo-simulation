@@ -32,4 +32,12 @@ public class Enclosure {
     public String toString() {
         return getDescription();
     }
+
+    public List<Animal> getInhabitants() {
+        return inhabitants;
+    }
+
+    public void removeInhabitant(Animal animal) {
+        inhabitants.remove(animal);
+    }
 }

@@ -1,5 +1,6 @@
 package pl.tarnow.iilo.zoo;
 
+import pl.tarnow.iilo.zoo.animal.Alpaca;
 import pl.tarnow.iilo.zoo.animal.Cat;
 import pl.tarnow.iilo.zoo.animal.RhinocerosBeetle;
 import pl.tarnow.iilo.zoo.option.BuyAnimal;
@@ -32,6 +33,7 @@ public class Program {
             final int choice = scanner.nextInt();
             menu.executeAction(choice);
             simulation.advanceDay();
+            printAllAnimalsInZoo();
         }
 
         System.out.println("At the end of the simulation in zoo" + zoo.getName() +" inventory is:");
@@ -55,13 +57,16 @@ public class Program {
     private static void initializeZoo() {
         Cat catMaciek = new Cat("Maciek", 100);
         RhinocerosBeetle rhinoStephen = new RhinocerosBeetle("Stephen", 100,"My tail is amazing");
+        Alpaca alpacaCate = new Alpaca("Cate", 10);
         Enclosure stephanTerrarium = new Enclosure("terrarium", "Sephans Terrarium");
         Enclosure maciekPaddock = new Enclosure("paddock", "Maciek's Padddock");
         stephanTerrarium.addInhabitant(rhinoStephen);
         maciekPaddock.addInhabitant(catMaciek);
+        maciekPaddock.addInhabitant(alpacaCate);
         zoo = new Zoo("My zoo");
         zoo.addAnimal(catMaciek);
         zoo.addAnimal(rhinoStephen);
+        zoo.addAnimal(alpacaCate);
         zoo.addEnclosure(stephanTerrarium);
         zoo.addEnclosure(maciekPaddock);
 

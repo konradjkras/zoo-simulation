@@ -1,6 +1,7 @@
 package pl.tarnow.iilo.zoo.animal;
 
 import pl.tarnow.iilo.zoo.Animal;
+import pl.tarnow.iilo.zoo.AnimalType;
 
 public class RhinocerosBeetle extends Animal {
     private String tail;
@@ -13,6 +14,11 @@ public class RhinocerosBeetle extends Animal {
      public String toString(){
         return super.toString() + " Look at my tail: "+ tail;
      }
+
+    @Override
+    public AnimalType getType() {
+        return AnimalType.HERBIVORE;
+    }
 
     public static RhinocerosBeetle createSpecimen(){
         return new RhinocerosBeetle("RhinocerosBeetle Default name", 100 , "Rhino default beautiful tail");

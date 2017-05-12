@@ -28,9 +28,15 @@ public class Zoo {
 
     public void removeAnimal(Animal animal) {
         animalList.remove(animal);
+        final Enclosure enclosure = animal.getEnclosure();
+        enclosure.removeInhabitant(animal);
     }
 
     public void addEnclosure(Enclosure enclosure){
         enclosureList.add(enclosure);
+    }
+
+    public List<Enclosure> getEnclosures() {
+        return enclosureList;
     }
 }

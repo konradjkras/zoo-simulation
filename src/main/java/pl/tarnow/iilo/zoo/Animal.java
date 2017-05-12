@@ -3,6 +3,7 @@ package pl.tarnow.iilo.zoo;
 public abstract class Animal {
     private int health;
     private String name;
+    private Enclosure enclosure;
 
     public Animal(String name, int health) {
         this.name = name;
@@ -37,5 +38,9 @@ public abstract class Animal {
         System.out.println("Hi here is "+name+" My new name is: "+newName);
         this.name=newName;
 
+    }
+
+    public void setEnclosure(Enclosure enclosure) {
+        this.enclosure = enclosure;
     }
 }

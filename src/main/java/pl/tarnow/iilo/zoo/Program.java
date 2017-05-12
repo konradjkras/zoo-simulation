@@ -55,9 +55,15 @@ public class Program {
     private static void initializeZoo() {
         Cat catMaciek = new Cat("Maciek", 100);
         RhinocerosBeetle rhinoStephen = new RhinocerosBeetle("Stephen", 100,"My tail is amazing");
+        Enclosure stephanTerrarium = new Enclosure("terrarium", "Sephans Terrarium");
+        Enclosure maciekPaddock = new Enclosure("paddock", "Maciek's Padddock");
+        stephanTerrarium.addInhabitant(rhinoStephen);
+        maciekPaddock.addInhabitant(catMaciek);
         zoo = new Zoo("My zoo");
         zoo.addAnimal(catMaciek);
         zoo.addAnimal(rhinoStephen);
+        zoo.addEnclosure(stephanTerrarium);
+        zoo.addEnclosure(maciekPaddock);
 
         simulation = new Simulation(zoo);
     }

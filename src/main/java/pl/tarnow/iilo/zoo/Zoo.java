@@ -6,6 +6,7 @@ import java.util.List;
 public class Zoo {
     private String name;
     private List<Animal> animalList;
+    private List<Enclosure> enclosure;
 
     public Zoo(String name){
         this.name = name;

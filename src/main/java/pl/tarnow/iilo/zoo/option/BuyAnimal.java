@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class BuyAnimal implements MenuOption {
-    private List<String> animalTypeList = Arrays.asList("Alpaca","Cat", "RhinocerosBeetle");;
+    private List<String> animalTypeList = Arrays.asList("Alpaca","Cat", "RhinocerosBeetle");
     private Scanner scanner;
 
     public BuyAnimal() {

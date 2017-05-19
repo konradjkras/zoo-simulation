@@ -3,6 +3,7 @@ package pl.tarnow.iilo.zoo;
 public abstract class Animal {
     private int health;
     private String name;
+    private Enclosure enclosure;
 
     public Animal(String name, int health) {
         this.name = name;
@@ -18,7 +19,7 @@ public abstract class Animal {
     }
 
     public String toString(){
-        return "Name: " +  name + " HP: " + health;
+        return "Name: " +  name + " I am "+ getType() + ", HP: " + health;
     }
 
     public void advanceDay(){
@@ -28,6 +29,7 @@ public abstract class Animal {
     public boolean isAlive(){
         return health>0;
     }
+    public boolean isMissing(){return enclosure==null;}
 
     public void feed(){
         health+=10;
@@ -38,4 +40,16 @@ public abstract class Animal {
         this.name=newName;
 
     }
+
+    public void setEnclosure(Enclosure enclosure) {
+        this.enclosure = enclosure;
+
+    }
+
+    abstract public AnimalType getType();
+
+    public Enclosure getEnclosure() {
+        return enclosure;
+    }
+
 }

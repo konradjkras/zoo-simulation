@@ -11,6 +11,39 @@ public class Simulation {
     }
 
     public void advanceDay(){
+        checkForStarvation();
+        checkForCanibalism();
+        checkForFlees();
+    }
+
+    private void checkForCanibalism() {
+        final List<Enclosure> enclosures = zoo.getEnclosures();
+        for(Enclosure enclosure: enclosures){
+            if(enclosureConainsCarnivore(enclosure)){
+                killRandomHerbivore(enclosure);
+            }
+        }
+    }
+
+    private void killRandomHerbivore(Enclosure enclosure) {
+        for(Animal animal: enclosure.getInhabitants()){
+            if(animal.getType()== AnimalType.HERBIVORE){
+                System.out.println("AAAA I am " + animal.getName() +" and I am beeing eaten!!!");
+                zoo.removeAnimal(animal);
+                return;
+            }
+        }
+    }
+
+    private boolean enclosureConainsCarnivore(Enclosure enclosure) {
+        for(Animal animal: enclosure.getInhabitants()){
+            if(animal.getType() == AnimalType.CARNIVORE)
+                return true;
+        }
+        return false;
+    }
+
+    private void checkForStarvation() {
         List<Animal> deadAnimals = new ArrayList();
         for (Animal animal: zoo.getAnimalList()){
             animal.advanceDay();
@@ -20,6 +53,19 @@ public class Simulation {
         }
         for(Animal animal: deadAnimals) {
             System.out.println("WARNING!! \t" + animal.getName() + "\t IS DEAD!!");
+            zoo.removeAnimal(animal);
+        }
+    }
+    private void checkForFlees(){
+        List<Animal> missingAnimals=new ArrayList();
+        for(Animal animal:zoo.getAnimalList()){
+            animal.advanceDay();
+            if(animal.isMissing()){
+                missingAnimals.add(animal);
+            }
+        }
+        for(Animal animal: missingAnimals){
+            System.out.println("WARNING!! \t"+animal.getName()+"\t FLEES!!");
             zoo.removeAnimal(animal);
         }
     }

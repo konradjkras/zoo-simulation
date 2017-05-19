@@ -6,11 +6,12 @@ import java.util.List;
 public class Zoo {
     private String name;
     private List<Animal> animalList;
-    private List<Enclosure> enclosure;
+    private List<Enclosure> enclosureList;
 
     public Zoo(String name){
         this.name = name;
-        animalList = new ArrayList<Animal>();
+        enclosureList = new ArrayList<>();
+        animalList = new ArrayList<>();
     }
 
     public String getName() {
@@ -27,5 +28,15 @@ public class Zoo {
 
     public void removeAnimal(Animal animal) {
         animalList.remove(animal);
+        final Enclosure enclosure = animal.getEnclosure();
+        if(animal.getEnclosure()!=null){
+            enclosure.removeInhabitant(animal);
+        }
     }
+
+    public void addEnclosure(Enclosure enclosure){
+        enclosureList.add(enclosure);
+    }
+
+    public List<Enclosure> getEnclosures() {return enclosureList;}
 }

@@ -1,10 +1,9 @@
 package pl.tarnow.iilo.zoo;
 
+import pl.tarnow.iilo.zoo.animal.Alpaca;
 import pl.tarnow.iilo.zoo.animal.Cat;
 import pl.tarnow.iilo.zoo.animal.RhinocerosBeetle;
-import pl.tarnow.iilo.zoo.option.BuyAnimal;
-import pl.tarnow.iilo.zoo.option.ChangeAnimalName;
-import pl.tarnow.iilo.zoo.option.FeedAnimal;
+import pl.tarnow.iilo.zoo.option.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,10 +27,12 @@ public class Program {
         printAllAnimalsInZoo();
 
         for(int i=0; i<105; i++){
+            System.out.println("__________________________");
             menu.printMenu();
             final int choice = scanner.nextInt();
             menu.executeAction(choice);
             simulation.advanceDay();
+            //printAllAnimalsInZoo();
         }
 
         System.out.println("At the end of the simulation in zoo" + zoo.getName() +" inventory is:");
@@ -43,7 +44,12 @@ public class Program {
         optionList = new ArrayList<MenuOption>();
         optionList.add(new FeedAnimal());
         optionList.add(new BuyAnimal());
+        optionList.add(new CreateEnclosure());
         optionList.add(new ChangeAnimalName());
+        optionList.add(new PrintAllAnimal());
+        optionList.add(new PrintAllEnclosures());
+        optionList.add(new PrintAnimalsInEnclosures());
+        optionList.add(new AssignEnclosuresToAnimal());
     }
 
     private static void printAllAnimalsInZoo() {
@@ -55,9 +61,17 @@ public class Program {
     private static void initializeZoo() {
         Cat catMaciek = new Cat("Maciek", 100);
         RhinocerosBeetle rhinoStephen = new RhinocerosBeetle("Stephen", 100,"My tail is amazing");
+        Alpaca alpacaCate = new Alpaca("Cate", 10);
+        Enclosure stephanTerrarium = new Enclosure("terrarium", "Sephans Terrarium");
+        Enclosure maciekPaddock = new Enclosure("paddock", "Maciek's Padddock");
+        stephanTerrarium.addInhabitant(rhinoStephen);
+        maciekPaddock.addInhabitant(catMaciek);
         zoo = new Zoo("My zoo");
         zoo.addAnimal(catMaciek);
         zoo.addAnimal(rhinoStephen);
+        zoo.addAnimal(alpacaCate);
+        zoo.addEnclosure(stephanTerrarium);
+        zoo.addEnclosure(maciekPaddock);
 
         simulation = new Simulation(zoo);
     }

@@ -9,11 +9,12 @@ public class Cat extends Animal {
     public Cat(String name, int health) {
         super(name, health);
     }
-    public EnclosureType supportedEnclosureType(){return EnclosureType.CAGE;}
     @Override
     public AnimalType getType() {
         return AnimalType.CARNIVORE;
     }
+    @Override
+    public EnclosureType supportedEnclosureType(){return EnclosureType.CAGE;}
 
 
     public static Cat createSpecimen(){

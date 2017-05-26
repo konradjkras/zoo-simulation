@@ -14,11 +14,15 @@ public class Enclosure {
         return description;
     }
 
-    public Enclosure(String enclosureType, String description) {
+    public Enclosure(EnclosureType enclosureType, String description) {
         this.description = description;
+        this.enclosureType = enclosureType;
         inhabitants = new ArrayList<>();
     }
-
+    public void changeDescription(String newDescription){ this.description=newDescription;}
+    public EnclosureType getEnclosureType(){
+        return enclosureType;
+    }
     public void addInhabitant(Animal animal){
         if(animal.getEnclosure() != null){
             animal.getEnclosure().removeInhabitant(animal);
@@ -38,7 +42,8 @@ public class Enclosure {
     public void removeInhabitant(Animal animal) {
         inhabitants.remove(animal);
     }
-    public static Enclosure createEnclosure(String enclosureType){
+
+    public static Enclosure createEnclosure(EnclosureType enclosureType){
         return new Enclosure(enclosureType,enclosureType+" default name");
     }
 }

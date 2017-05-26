@@ -18,6 +18,8 @@ public abstract class Animal {
         return health;
     }
 
+    abstract public EnclosureType supportedEnclosureType();
+
     public String toString(){
         return "Name: " +  name + " I am "+ getType() + ", HP: " + health;
     }

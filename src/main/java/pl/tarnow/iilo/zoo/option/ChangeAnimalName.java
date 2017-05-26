@@ -26,7 +26,9 @@ public class ChangeAnimalName implements MenuOption{
         Helper.printList(animalList);
         final int animalChoice = scanner.nextInt();
         System.out.println("Give new name");
-        animalList.get(animalChoice-1).changeName(scanner.next());
+        Scanner input=new Scanner(System.in);
+        String newName=input.nextLine();
+        animalList.get(animalChoice-1).changeName(newName);
     }
 
 }

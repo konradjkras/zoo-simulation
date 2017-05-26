@@ -10,7 +10,7 @@ public class PrintAllEnclosures implements MenuOption {
         return getOptionName();
     }
     public String getOptionName() {
-        return "Enlosures list";
+        return "Enclosures list";
     }
     public void execute(Zoo zoo){
         final List<Enclosure> enclosuresList = zoo.getEnclosures();

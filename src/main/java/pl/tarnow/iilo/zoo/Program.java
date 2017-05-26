@@ -32,8 +32,7 @@ public class Program {
             menu.printMenu();
             final int choice = scanner.nextInt();
             menu.executeAction(choice);
-            printAllAnimalsInZoo();
-        }
+            //printAllAnimalsInZoo();        }
 
         System.out.println("At the end of the simulation in zoo" + zoo.getName() +" inventory is:");
         printAllAnimalsInZoo();
@@ -47,6 +46,7 @@ public class Program {
         optionList.add(new BuyAnimal());
         optionList.add(new CreateEnclosure());
         optionList.add(new ChangeAnimalName());
+        optionList.add(new ChangeEnclosureName());
         optionList.add(new PrintAllAnimal());
         optionList.add(new PrintAllEnclosures());
         optionList.add(new PrintAnimalsInEnclosures());
@@ -64,8 +64,8 @@ public class Program {
         Cat catMaciek = new Cat("Maciek", 100);
         RhinocerosBeetle rhinoStephen = new RhinocerosBeetle("Stephen", 100,"My tail is amazing");
         Alpaca alpacaCate = new Alpaca("Cate", 10);
-        Enclosure stephanTerrarium = new Enclosure("terrarium", "Sephans Terrarium");
-        Enclosure maciekPaddock = new Enclosure("paddock", "Maciek's Padddock");
+        Enclosure stephanTerrarium = new Enclosure(EnclosureType.TERRARIUM, "Sephans Terrarium");
+        Enclosure maciekPaddock = new Enclosure(EnclosureType.PADDOCK, "Maciek's Padddock");
         stephanTerrarium.addInhabitant(rhinoStephen);
         maciekPaddock.addInhabitant(catMaciek);
         zoo = new Zoo("My zoo");
@@ -75,5 +75,5 @@ public class Program {
         zoo.addEnclosure(stephanTerrarium);
         zoo.addEnclosure(maciekPaddock);
 
-    }
+        simulation = new Simulation(zoo);    }
 }

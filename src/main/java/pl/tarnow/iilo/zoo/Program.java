@@ -31,7 +31,14 @@ public class Program {
             System.out.println("__________________________");
             menu.printMenu();
             final int choice = scanner.nextInt();
-            menu.executeAction(choice);
+            try {
+                menu.executeAction(choice);
+            } catch (OptionFailedException e) {
+                System.out.println("Option executon failed with message: "+ e.getMessage());
+                //e.printStackTrace();
+            } catch (Exception e){
+                e.printStackTrace();
+            }
             //printAllAnimalsInZoo();
         }
 

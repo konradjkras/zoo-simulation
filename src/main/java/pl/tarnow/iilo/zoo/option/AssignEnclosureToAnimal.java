@@ -21,7 +21,7 @@ public class AssignEnclosureToAnimal implements MenuOption{
         return "Assign enclosures to animal";
     }
 
-    public void execute(Zoo zoo){
+    public void execute(Zoo zoo) throws OptionFailedException {
         final Animal chosenAnimal = chooseAnimal(zoo);
         final Enclosure chosenEnclosure = chooseEnclosure(zoo);
 
@@ -32,7 +32,7 @@ public class AssignEnclosureToAnimal implements MenuOption{
             chosenEnclosure.addInhabitant(chosenAnimal);
             chosenAnimal.setEnclosure(chosenEnclosure);
         } else {
-            System.out.println(chosenAnimal.getName()+" can't be in "
+            throw new OptionFailedException(chosenAnimal.getName()+" can't be in "
                     + chosenEnclosure.getEnclosureType().toString());
         }
     }

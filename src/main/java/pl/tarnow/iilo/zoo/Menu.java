@@ -15,10 +15,9 @@ public class Menu {
         Helper.printList(optionList);
     }
 
-    public void executeAction(int choice) {
+    public void executeAction(int choice) throws OptionFailedException {
         if(choice> optionList.size()){
-            System.out.println("Unrecognized option");
-            return;
+            throw new OptionFailedException("Unrecognized option");
         }
         optionList.get(choice-1).execute(zoo);
     }

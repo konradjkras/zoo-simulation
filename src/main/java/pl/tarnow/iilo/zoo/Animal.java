@@ -43,7 +43,6 @@ public abstract class Animal {
 
     public void setEnclosure(Enclosure enclosure) {
         this.enclosure = enclosure;
-
     }
 
     abstract public AnimalType getType();

@@ -9,8 +9,8 @@ import java.util.Scanner;
 public class AssignEnclosuresToAnimal implements MenuOption{
     private Scanner scanner;
 
-    public AssignEnclosuresToAnimal(){
-        this.scanner = new Scanner(System.in);
+    public AssignEnclosuresToAnimal(Scanner scanner){
+        this.scanner = scanner;
     }
 
     public String toString(){

@@ -20,6 +20,9 @@ public class Enclosure {
     }
 
     public void addInhabitant(Animal animal){
+        if(animal.getEnclosure() != null){
+            animal.getEnclosure().removeInhabitant(animal);
+        }
         inhabitants.add(animal);
         animal.setEnclosure(this);
     }

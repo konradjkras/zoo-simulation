@@ -19,6 +19,7 @@ public class Program {
         Scanner scanner = new Scanner(System.in);
 
         initializeZoo();
+        simulation = new Simulation(zoo);
         initializeOptions();
 
         Menu menu = new Menu(zoo, optionList);
@@ -31,8 +32,7 @@ public class Program {
             menu.printMenu();
             final int choice = scanner.nextInt();
             menu.executeAction(choice);
-            simulation.advanceDay();
-            //printAllAnimalsInZoo();
+            printAllAnimalsInZoo();
         }
 
         System.out.println("At the end of the simulation in zoo" + zoo.getName() +" inventory is:");
@@ -41,6 +41,7 @@ public class Program {
     }
 
     private static void initializeOptions() {
+        Scanner scanner = new Scanner(System.in);
         optionList = new ArrayList<MenuOption>();
         optionList.add(new FeedAnimal());
         optionList.add(new BuyAnimal());
@@ -49,7 +50,8 @@ public class Program {
         optionList.add(new PrintAllAnimal());
         optionList.add(new PrintAllEnclosures());
         optionList.add(new PrintAnimalsInEnclosures());
-        optionList.add(new AssignEnclosuresToAnimal());
+        optionList.add(new AssignEnclosuresToAnimal(scanner));
+        optionList.add(new AdvanceDay(simulation));
     }
 
     private static void printAllAnimalsInZoo() {
@@ -73,6 +75,5 @@ public class Program {
         zoo.addEnclosure(stephanTerrarium);
         zoo.addEnclosure(maciekPaddock);
 
-        simulation = new Simulation(zoo);
     }
 }

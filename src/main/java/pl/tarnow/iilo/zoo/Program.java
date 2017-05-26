@@ -19,6 +19,7 @@ public class Program {
         Scanner scanner = new Scanner(System.in);
 
         initializeZoo();
+        simulation = new Simulation(zoo);
         initializeOptions();
 
         Menu menu = new Menu(zoo, optionList);
@@ -31,7 +32,6 @@ public class Program {
             menu.printMenu();
             final int choice = scanner.nextInt();
             menu.executeAction(choice);
-            simulation.advanceDay();
             //printAllAnimalsInZoo();
         }
 
@@ -41,15 +41,18 @@ public class Program {
     }
 
     private static void initializeOptions() {
+        Scanner scanner=new Scanner(System.in);
         optionList = new ArrayList<MenuOption>();
         optionList.add(new FeedAnimal());
         optionList.add(new BuyAnimal());
         optionList.add(new CreateEnclosure());
         optionList.add(new ChangeAnimalName());
+        optionList.add(new ChangeEnclosureName());
         optionList.add(new PrintAllAnimal());
         optionList.add(new PrintAllEnclosures());
         optionList.add(new PrintAnimalsInEnclosures());
-        optionList.add(new AssignEnclosuresToAnimal());
+        optionList.add(new AssignEnclosuresToAnimal(scanner));
+        optionList.add(new AdvanceDay(simulation));
     }
 
     private static void printAllAnimalsInZoo() {
@@ -62,8 +65,8 @@ public class Program {
         Cat catMaciek = new Cat("Maciek", 100);
         RhinocerosBeetle rhinoStephen = new RhinocerosBeetle("Stephen", 100,"My tail is amazing");
         Alpaca alpacaCate = new Alpaca("Cate", 10);
-        Enclosure stephanTerrarium = new Enclosure("terrarium", "Sephans Terrarium");
-        Enclosure maciekPaddock = new Enclosure("paddock", "Maciek's Padddock");
+        Enclosure stephanTerrarium = new Enclosure(EnclosureType.TERRARIUM, "Sephans Terrarium");
+        Enclosure maciekPaddock = new Enclosure(EnclosureType.PADDOCK, "Maciek's Padddock");
         stephanTerrarium.addInhabitant(rhinoStephen);
         maciekPaddock.addInhabitant(catMaciek);
         zoo = new Zoo("My zoo");
@@ -73,6 +76,6 @@ public class Program {
         zoo.addEnclosure(stephanTerrarium);
         zoo.addEnclosure(maciekPaddock);
 
-        simulation = new Simulation(zoo);
+
     }
 }

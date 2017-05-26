@@ -47,6 +47,10 @@ public class BuyAnimal implements MenuOption {
                 break;
         }
         if(newAnimal!= null){
+            System.out.println("Give a name");
+            final Scanner input=new Scanner(System.in);
+            final String name=input.nextLine();
+            newAnimal.changeName(name);
             zoo.addAnimal(newAnimal);
         }
     }

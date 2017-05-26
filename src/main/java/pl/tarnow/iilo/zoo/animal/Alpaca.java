@@ -9,11 +9,12 @@ public class Alpaca extends Animal {
     public Alpaca(String name, int health) {
         super(name, health);
     }
-    public EnclosureType supportedEnclosureType(){return EnclosureType.PADDOCK;}
     @Override
     public AnimalType getType() {
         return AnimalType.HERBIVORE;
     }
+    @Override
+    public EnclosureType supportedEnclosureType(){return EnclosureType.PADDOCK;}
 
     public static Alpaca createSpecimen(){
         return new Alpaca("Alpaca Default name", 100);

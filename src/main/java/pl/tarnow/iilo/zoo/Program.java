@@ -32,7 +32,8 @@ public class Program {
             menu.printMenu();
             final int choice = scanner.nextInt();
             menu.executeAction(choice);
-            //printAllAnimalsInZoo();        }
+            //printAllAnimalsInZoo();
+        }
 
         System.out.println("At the end of the simulation in zoo" + zoo.getName() +" inventory is:");
         printAllAnimalsInZoo();

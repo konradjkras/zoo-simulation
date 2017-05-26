@@ -51,7 +51,7 @@ public class Program {
         optionList.add(new PrintAllAnimal());
         optionList.add(new PrintAllEnclosures());
         optionList.add(new PrintAnimalsInEnclosures());
-        optionList.add(new AssignEnclosuresToAnimal(scanner));
+        optionList.add(new AssignEnclosureToAnimal(scanner));
         optionList.add(new AdvanceDay(simulation));
     }
 
